@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const SLIDE_IMAGE = "https://picsum.photos/seed/nearby-login/800/1400";
 
 // Base URL for your Express API — adjust to match your setup
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://nearby-app-2u95.onrender.com//api";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://nearby-app-2u95.onrender.com/api";
 
 export default function Login() {
   const navigate = useNavigate();
