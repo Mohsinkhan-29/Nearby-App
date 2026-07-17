@@ -45,20 +45,30 @@ export default function Login() {
         throw new Error(data.message || "Something went wrong");
       }
 
-      // Backend should return a signed JWT, e.g.:
-      // jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: "7d" })
-      const { token } = data;
+      const res = await fetch(`${API_BASE_URL}${endpoint}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      console.log(data);
+
+      if (!res.ok) {
+        throw new Error(data.message || "Something went wrong");
+      }
+
+      const { token, user } = data;
 
       if (!token) {
         throw new Error("No token received from server");
       }
 
-      // Persist the JWT — every future request attaches it as:
-      // Authorization: `Bearer ${token}`
-      login(data.token, data.user);
-      const data = await res.json();
+      login(token, user);
 
-      console.log(data);
       navigate("/discover");
 
 
