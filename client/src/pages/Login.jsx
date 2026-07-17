@@ -56,6 +56,7 @@ export default function Login() {
       // Persist the JWT — every future request attaches it as:
       // Authorization: `Bearer ${token}`
       login(data.token, data.user);
+      console.log(data);
       navigate("/discover");
 
 
