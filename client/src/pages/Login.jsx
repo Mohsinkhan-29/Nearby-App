@@ -5,7 +5,7 @@ import { useAuth } from "../context/AuthContext";
 const SLIDE_IMAGE = "https://picsum.photos/seed/nearby-login/800/1400";
 
 // Base URL for your Express API — adjust to match your setup
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://nearby-app-2u95.onrender.com/api";
+const API_BASE_URL ="https://nearby-app-2u95.onrender.com/api";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -45,22 +45,6 @@ export default function Login() {
         throw new Error(data.message || "Something went wrong");
       }
 
-      const res = await fetch(`${API_BASE_URL}${endpoint}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      const data = await res.json();
-
-      console.log(data);
-
-      if (!res.ok) {
-        throw new Error(data.message || "Something went wrong");
-      }
-
       const { token, user } = data;
 
       if (!token) {
@@ -70,8 +54,6 @@ export default function Login() {
       login(token, user);
 
       navigate("/discover");
-
-
     } catch (err) {
       setError(err.message || "Unable to authenticate. Please try again.");
     } finally {
