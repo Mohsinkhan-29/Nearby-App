@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const SLIDE_IMAGE = "https://picsum.photos/seed/nearby-login/800/1400";
 
@@ -53,9 +54,10 @@ export default function Login() {
 
       // Persist the JWT — every future request attaches it as:
       // Authorization: `Bearer ${token}`
-      localStorage.setItem("token", token);
-
+      login(data.token, data.user);
       navigate("/discover");
+
+      
     } catch (err) {
       setError(err.message || "Unable to authenticate. Please try again.");
     } finally {
@@ -87,18 +89,16 @@ export default function Login() {
           <button
             type="button"
             onClick={() => setMode("login")}
-            className={`flex-1 rounded-pill py-2 text-sm font-semibold transition-colors ${
-              !isRegister ? "bg-paper text-night" : "text-paper/70"
-            }`}
+            className={`flex-1 rounded-pill py-2 text-sm font-semibold transition-colors ${!isRegister ? "bg-paper text-night" : "text-paper/70"
+              }`}
           >
             Log in
           </button>
           <button
             type="button"
             onClick={() => setMode("register")}
-            className={`flex-1 rounded-pill py-2 text-sm font-semibold transition-colors ${
-              isRegister ? "bg-paper text-night" : "text-paper/70"
-            }`}
+            className={`flex-1 rounded-pill py-2 text-sm font-semibold transition-colors ${isRegister ? "bg-paper text-night" : "text-paper/70"
+              }`}
           >
             Get started
           </button>
@@ -150,8 +150,8 @@ export default function Login() {
             {loading
               ? "Please wait…"
               : isRegister
-              ? "Create account"
-              : "Log in"}
+                ? "Create account"
+                : "Log in"}
           </button>
         </form>
 
