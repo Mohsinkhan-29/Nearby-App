@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext(null);
-const API_BASE_URL =  "https://nearby-app-2u95.onrender.com";
+const API_BASE_URL =  "https://nearby-app-2u95.onrender.com/api";
 
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(() => localStorage.getItem("token"));
