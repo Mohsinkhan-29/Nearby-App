@@ -9,6 +9,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://nearby-app-2u
 
 export default function Login() {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const [mode, setMode] = useState("login"); // "login" | "register"
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -57,7 +58,7 @@ export default function Login() {
       login(data.token, data.user);
       navigate("/discover");
 
-      
+
     } catch (err) {
       setError(err.message || "Unable to authenticate. Please try again.");
     } finally {
