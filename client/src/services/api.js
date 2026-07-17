@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE = "https://nearby-app-2u95.onrender.com/api/" ;
+const API_BASE = "https://nearby-app-2u95.onrender.com/api" ;
 
 const client = axios.create({
   baseURL: API_BASE,
