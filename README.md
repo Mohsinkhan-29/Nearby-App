@@ -166,18 +166,6 @@ This project demonstrates:
 
 ---
 
-## Future Improvements
-
-- Place details page
-- Photo proxy endpoint
-- Favorites using Local Storage
-- City search fallback
-- Interactive map integration
-- Backend rate limiting
-- Progressive Web App support
-
----
-
 ## Author
 
 **Mohsin Khan**
